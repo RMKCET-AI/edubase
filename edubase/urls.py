@@ -20,3 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('eduapp.urls')),
 ]
+admin.site.site_header = 'EduBase'
+admin.site.site_title = 'EduBase'
+admin.site.index_title = 'Admin Panel'

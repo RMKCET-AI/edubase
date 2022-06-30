@@ -1,6 +1,7 @@
 {% extends 'eduapp/base.html' %}
+{% load static %}
 {% block material_active %}
-active
+    active
 {% endblock %}
 {% block content %}
     <section class="page-section portfolio" id="portfolio">
@@ -34,7 +35,7 @@ active
                 <div class="divider-custom-line"></div>
             </div>
             <div class="accordion accordion-flush" id="accordionFlushExample">
-                {% for subject in ai_subjects %}
+                {% for subject in it_subjects %}
                     <div class="accordion-item text-center">
                         <h2 class="accordion-header" id="flush-heading{{ forloop.counter }}">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -57,6 +58,5 @@ active
                 {% endfor %}
             </div>
         </div>
-
     </section>
 {% endblock %}
