@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'eduapp',
-    'django_cleanup.apps.CleanupConfig'
+    'django_cleanup.apps.CleanupConfig',
+    'django_summernote'
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,7 @@ STATIC_URL = 'static/'
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 AZURE_CONNECTION_STRING = os.environ.get('AZURE_CONNECTION_STRING')
 AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
-MEDIA_URL = f"http://{os.environ.get('AZURE_ACCOUNT_NAME')}.blob.core.windows.net/{os.environ.get('AZURE_CONTAINER')}/"
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())

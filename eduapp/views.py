@@ -1,6 +1,6 @@
 import os
 from django.shortcuts import render
-from .models import AI_Subject,IT_Subject,CSE_Subject
+from .models import AI_Subject,IT_Subject,CSE_Subject,BlogPost
 from django.conf import settings
 
 
@@ -10,7 +10,8 @@ def index(request):
 
 
 def blog(request):
-    return render(request, 'eduapp/blog.html')
+    blogs = BlogPost.objects.all()
+    return render(request, 'eduapp/blog.html' , {'blogs': blogs})
 
 
 def material(request):
@@ -36,4 +37,8 @@ def mech(request):
 
 def it(request):
     it_subjects = IT_Subject.objects.all()
-    return render(request, 'eduapp/it.html',{'it_subjects': it_subjects,'base_url':settings.MEDIA_URL})
+    return render(request, 'eduapp/it.html',{'it_subjects': it_subjects})
+
+def blog_detail(request,blog_id):
+    curr_blog = BlogPost.objects.get(id=blog_id)
+    return render(request, 'eduapp/blog_detail.html', {'blog': curr_blog})

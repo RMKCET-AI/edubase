@@ -19,6 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('eduapp.urls')),
+    path('summernote/', include('django_summernote.urls'))
 ]
 admin.site.site_header = 'EduBase'
 admin.site.site_title = 'EduBase'

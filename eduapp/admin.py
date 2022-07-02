@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import AI_Subject, ai_note, CSE_Subject, cse_note, IT_Subject, it_note
+from .models import AI_Subject, ai_note, CSE_Subject, cse_note, IT_Subject, it_note, BlogPost
+from django_summernote.admin import SummernoteModelAdmin
+from django_summernote.utils import get_attachment_model
 
 
 # Register your models here.
@@ -36,4 +38,10 @@ class IT_contentAdmin(admin.ModelAdmin):
     inlines = [ChoiceInlineIT]
 
 
+class PostAdmin(SummernoteModelAdmin):
+    summernote_fields = ('content',)
+
+
 admin.site.register(IT_Subject, IT_contentAdmin)
+admin.site.register(BlogPost, PostAdmin)
+# admin.site.unregister(get_attachment_model())

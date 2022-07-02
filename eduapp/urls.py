@@ -11,4 +11,5 @@ urlpatterns = [
     path('material/ece',views.ece,name='material_ece'),
     path('material/mech',views.mech,name='material_mech'),
     path('material/it',views.it,name='material_it'),
+    path('blog/<int:blog_id>',views.blog_detail,name='blog_detail'),
 ]
