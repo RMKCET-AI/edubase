@@ -6,21 +6,45 @@
     <section class="page-section portfolio" id="portfolio">
         <br>
         <br>
-        {% for blog in blogs %}
-            <div class="container">
-                <h1 class="text-center">{{ blog.title }}</h1>
-                {{ blog.content|safe }}
-            </div>
-        {% endfor %}
+        <div class="container">
+            {% for blog_obj in page_obj %}
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ blog_obj.image_template.url }}" class="rounded-start img-thumbnail" alt="..."
+                                 style="height: 15vw; width : 25vw">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ blog_obj.title }}</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">{{ blog_obj.date_posted }}</small></p>
+                            </div>
+                            <div class="text-left">
+                                <a href="{% url 'blog_detail' blog_id=blog_obj.id %}">
+                                    <button class="btn btn-primary">View</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
         <br>
         <br>
-        <nav aria-label="Page navigation example" >
+        <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?blog_page={{ page_obj.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+                <li class="page-item"><a class="page-link"
+                                         href="?blog_page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?blog_page={{ page_obj.next_page_number }}">Next</a></li>
+                {% endif %}
             </ul>
         </nav>
     </section>

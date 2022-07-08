@@ -1,6 +1,7 @@
 import os
 from django.shortcuts import render
 from .models import AI_Subject,IT_Subject,CSE_Subject,BlogPost
+from django.core.paginator import Paginator
 from django.conf import settings
 
 
@@ -11,7 +12,10 @@ def index(request):
 
 def blog(request):
     blogs = BlogPost.objects.all()
-    return render(request, 'eduapp/blog.html' , {'blogs': blogs})
+    paginator = Paginator(blogs, 2)
+    page_number = request.GET.get('blog_page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'eduapp/blog.html' , {'page_obj': page_obj})
 
 
 def material(request):

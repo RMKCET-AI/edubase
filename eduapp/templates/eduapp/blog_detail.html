@@ -6,22 +6,14 @@
     <section class="page-section portfolio" id="portfolio">
         <br>
         <br>
-        {% for blog in blogs %}
+
             <div class="container">
                 <h1 class="text-center">{{ blog.title }}</h1>
                 {{ blog.content|safe }}
             </div>
-        {% endfor %}
+
         <br>
         <br>
-        <nav aria-label="Page navigation example" >
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+
     </section>
 {% endblock %}

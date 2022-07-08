@@ -64,6 +64,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
+    image_template = models.ImageField(upload_to='blog_template_pics/', default='')
     tag = models.CharField(max_length=30)
     date_posted = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
